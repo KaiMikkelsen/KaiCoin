@@ -7,6 +7,7 @@ Block::Block(uint32_t nIndexIn, const string &sDataIn)
 {
     _nNonce = -1;
     _tTime = time(nullptr);
+    
 
 }
 
@@ -17,15 +18,20 @@ string Block::GetHash()
 
 void Block::MineBlock(uint32_t nDifficulty)
 {
-    char cstr[nDifficulty + 1];
-    for(uint32_t i = 0; i , nDifficulty; i++)
+    
+
+    char* cstr = new char[nDifficulty + 1];
+    for(uint32_t i = 0; i < nDifficulty; i++)
     {
         cstr[i] = '0';
     }
 
+    
+
     cstr[nDifficulty] = '\0';
 
     string str(cstr);
+    
 
     do
     {
@@ -38,9 +44,11 @@ void Block::MineBlock(uint32_t nDifficulty)
 
     } while (_sHash.substr(0, nDifficulty) != str);
 
+    delete cstr;
+
     cout << "block mined:" << _sHash << endl;
 
-
+    
 
 }
 

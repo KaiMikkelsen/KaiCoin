@@ -21,7 +21,7 @@ void Blockchain::addBlock(Block newBlock)
 
     if(chain.size() == chainDivide)
     {
-        chainDivide * 2;
+        chainDivide = chainDivide * 2;
 
         amountgivenout = totalCoins / chainDivide;
     }

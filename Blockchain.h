@@ -10,11 +10,11 @@ class Blockchain {
 public:
     Blockchain();
 
-    void AddBlock(Block bNew);
+    void addBlock(Block newBlock);
 
 private:
-    uint32_t _nDifficulty;
-    vector<Block> _vChain;
+    uint32_t difficulty;
+    vector<Block> chain;
 
-    Block _GetLastBlock() const;
+    Block getLastBlock() const;
 };

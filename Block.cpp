@@ -3,58 +3,54 @@
 #include <sstream>
 
 
-Block::Block(uint32_t nIndexIn, const string &sDataIn)
+Block::Block(uint32_t indexIn, const string &dataIn)
 {
-    _nNonce = -1;
-    _tTime = time(nullptr);
+    nonce = -1;
+    timeStarted = time(nullptr);
     
 
 }
 
-string Block::GetHash()
+string Block::getHash()
 {
-    return _sHash;
+    return hash;
 }
 
-void Block::MineBlock(uint32_t nDifficulty)
+void Block::mineBlock(uint32_t difficulty)
 {
     
 
-    char* cstr = new char[nDifficulty + 1];
-    for(uint32_t i = 0; i < nDifficulty; i++)
+    char* codeToCrack = new char[difficulty + 1];
+
+    for(uint32_t i = 0; i < difficulty; i++)
     {
-        cstr[i] = '0';
+        codeToCrack[i] = '0';
     }
 
     
 
-    cstr[nDifficulty] = '\0';
+    codeToCrack[difficulty] = '\0';
 
-    string str(cstr);
+    string str(codeToCrack);
     
 
     do
     {
+        nonce++;
+        hash = calculateHash();
+    } while (hash.substr(0, difficulty) != str);
 
-        _nNonce++;
-        _sHash = _CalculateHash();
+    delete codeToCrack;
 
-
-
-
-    } while (_sHash.substr(0, nDifficulty) != str);
-
-    delete cstr;
-
-    cout << "block mined:" << _sHash << endl;
+    cout << "block mined:" << hash << endl;
 
     
 
 }
 
-inline string Block::_CalculateHash() const {
+inline string Block::calculateHash() const {
     stringstream sst;
-    sst << _nIndex << _tTime << _sData << _nNonce << sPrevHash;
+    sst << index << time << data << nonce << previousHash;
 
     return sha256(sst.str());
 }

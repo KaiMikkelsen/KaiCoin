@@ -4,26 +4,26 @@
 
 Blockchain::Blockchain()
 {
-    _vChain.emplace_back(Block(0, "Genesis Block"));
-    _nDifficulty = 1;
+    chain.emplace_back(Block(0, "Genesis Block"));
+    difficulty = 1;
 
 
 }
 
-void Blockchain::AddBlock(Block bNew)
+void Blockchain::addBlock(Block newBlock)
 {
     
-    bNew.sPrevHash = _GetLastBlock().GetHash();
+    newBlock.previousHash = getLastBlock().getHash();
     
-    bNew.MineBlock(_nDifficulty);
+    newBlock.mineBlock(difficulty);
 
-    _vChain.push_back(bNew);
+    chain.push_back(newBlock);
 
 
 
 
 }
 
-Block Blockchain::_GetLastBlock() const{
-    return _vChain.back();
+Block Blockchain::getLastBlock() const{
+    return chain.back();
 }

@@ -7,23 +7,23 @@ class Block
 {
 
 public:
-    string sPrevHash;
+    string previousHash;
 
-    Block(uint32_t nIndexIn, const string &sDataIn);
+    Block(uint32_t indexIn, const string &dataIn);
 
-    string GetHash();
+    string getHash();
 
-    void MineBlock(uint32_t nDifficulty);
+    void mineBlock(uint32_t difficulty);
 
 private:
 
-    uint32_t _nIndex;
-    int64_t _nNonce;
-    string _sData;
-    string _sHash;
-    time_t _tTime;
+    uint32_t index;
+    int64_t nonce;
+    string data;
+    string hash;
+    time_t timeStarted;
 
-    string _CalculateHash() const;
+    string calculateHash() const;
 
 
 };

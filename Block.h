@@ -7,12 +7,11 @@ class Block
 {
 
 public:
+
     string previousHash;
-
-    Block(uint32_t indexIn, const string &dataIn);
-
     string getHash();
 
+    Block(uint32_t indexIn, const string &dataIn);
     void mineBlock(uint32_t difficulty);
 
 private:

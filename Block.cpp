@@ -3,12 +3,12 @@
 #include <sstream>
 
 
-Block::Block(uint32_t indexIn, const string &dataIn)
+Block::Block(uint32_t indexIn, const string &dataIn): index(indexIn), data(dataIn)
 {
     nonce = -1;
     timeStarted = time(nullptr);
     
-
+    hash = calculateHash();
 }
 
 string Block::getHash()
@@ -37,7 +37,11 @@ void Block::mineBlock(uint32_t difficulty)
     do
     {
         nonce++;
+        //cout << nonce << endl;
+
         hash = calculateHash();
+
+        //cout << hash << endl;
     } while (hash.substr(0, difficulty) != str);
 
     delete codeToCrack;

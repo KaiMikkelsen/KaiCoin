@@ -5,7 +5,7 @@
 Blockchain::Blockchain()
 {
     chain.emplace_back(Block(0, "Genesis Block"));
-    difficulty = 1;
+    difficulty = 2;
 
 
 }
@@ -19,8 +19,12 @@ void Blockchain::addBlock(Block newBlock)
 
     chain.push_back(newBlock);
 
+    if(chain.size() == chainDivide)
+    {
+        chainDivide * 2;
 
-
+        amountgivenout = totalCoins / chainDivide;
+    }
 
 }
 

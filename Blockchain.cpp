@@ -5,7 +5,7 @@
 Blockchain::Blockchain()
 {
     chain.emplace_back(Block(0, "Genesis Block"));
-    difficulty = 2;
+    difficulty = 5;
 
 
 }

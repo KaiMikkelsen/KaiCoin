@@ -5,7 +5,7 @@
 # To-do's
 - Threads for mining?
 - Some sort of database?
-- 
+- API all set up
 
 # References
 https://davenash.com/2017/10/build-a-blockchain-with-c/
